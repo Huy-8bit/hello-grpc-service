@@ -22,13 +22,13 @@ func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 }
 
 func GRPC() {
-	lis, err := net.Listen("tcp", ":9001")
+	lis, err := net.Listen("tcp", ":9000")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
 	pb.RegisterHelloServiceServer(s, &server{})
-	log.Println("Server is running on port 9001")
+	log.Println("Server is running on port 9000")
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
